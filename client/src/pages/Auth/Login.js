@@ -1,38 +1,43 @@
+
 import React, {useState} from 'react'
 import Layout from '../../components/Layout'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../styles/AuthStyles.css";
-
-const Register = () => {
-  <ToastContainer />
-  const [name,setName]=useState("")
+import { useAuth } from '../../context/auth';
+const Login = () => {
+  
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
-  const [phone,setPhone]=useState("")
-  const [address,setAddress]=useState("")
-  const [answer,setAnswer]=useState("")
+  const [auth,setAuth]=useAuth();
 
   const navigate=useNavigate();
+
+const location=useLocation()
   const handleSubmit=async(e)=>{
     e.preventDefault()
     try{
       console.log("API URL:", process.env.REACT_APP_API);
-      const res = await axios.post('http://localhost:8080/api/v1/auth/register', {
-        name,
+      const res = await axios.post('http://localhost:8080/api/v1/auth/login', {
+      
         email,
         password,
-        phone,
-        address,
-        answer
+      
       });
       
 if (res && res.data.success) {
   toast.success(res.data && res.data.message);
-  navigate("/login");
+setAuth({
+    ...auth,
+    user:res.data.user,
+    token: res.data.token
+});
+localStorage.setItem('auth',JSON.stringify(res.data))
+
+  navigate(location.state||"/");
 } 
 else {
   toast.error(res.data.message);
@@ -53,22 +58,11 @@ else {
     }
   };
   return (
-    <Layout title="Register - Ecommer App">
+    <Layout title="Login - Ecommer App">
     <div className="form-container" style={{ minHeight: "90vh" }}>
       <form onSubmit={handleSubmit}>
-        <h4 className="title">REGISTER FORM</h4>
-        <div className="mb-3">
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Enter Your Name"
-            required
-            autoFocus
-          />
-        </div>
+        <h4 className="title">LOGIN FORM</h4>
+        
         <div className="mb-3">
           <input
             type="email"
@@ -91,46 +85,20 @@ else {
             required
           />
         </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Enter Your Phone"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="Enter Your Address"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            className="form-control"
-            id="exampleInputEmail1"
-            placeholder="What is your favourite Sports? "
-            required
-          />
+        
+        <div className='mb-3'>
+        <button type="button" className="btn btn-primary " onClick={()=>{navigate('/forgot-Password')}}>
+          Forgot Password
+        </button>
         </div>
         <button type="submit" className="btn btn-primary">
-          REGISTER
+          LOGIN
         </button>
+        
       </form>
     </div>
   </Layout>
   )
 }
 
-export default Register
+export default Login
