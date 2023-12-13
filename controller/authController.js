@@ -118,10 +118,13 @@ res.status(200).send({
     success:true,
     message:'Login Successfully!',
     user:{
+        _id:user._id,
         name:user.name,
         email:user.email,
         phone:user.phone,
-        address:user.address
+        address:user.address,
+        role:user.role,
+        
     },
     token,
 });

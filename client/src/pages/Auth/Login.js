@@ -87,7 +87,7 @@ else {
         </div>
         
         <div className='mb-3'>
-        <button type="button" className="btn btn-primary " onClick={()=>{navigate('/forgot-Password')}}>
+          <button type="button" className="btn btn-primary " onClick={()=>{navigate('/forgot-Password')}}>
           Forgot Password
         </button>
         </div>

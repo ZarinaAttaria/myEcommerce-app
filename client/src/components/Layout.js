@@ -29,7 +29,7 @@ const Layout=({children,title,description,keywords, author})=>{
 Layout.defaultProps={
     title:'Ecommerce App - shop now',
     description:'mern Stack Project',
-    keywords:'mern,reavy,node,mongodb',
+    keywords:'mern,react,node,mongodb',
    author:'Zareesha'
 };
 export default Layout;
