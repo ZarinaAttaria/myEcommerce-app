@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Layout from '../../components/Layout'
+import Layout from '../../components/layout/Layout'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -11,9 +11,7 @@ const ForgotPassword = () => {
     const [email,setEmail]=useState("")
   const [newPassword,setNewPassword]=useState("")
   const [answer,setAnswer]=useState("")
-
   const navigate=useNavigate();
-
   const handleSubmit=async(e)=>{
     e.preventDefault()
     try{
@@ -28,9 +26,6 @@ const ForgotPassword = () => {
       
 if (res && res.data.success) {
   toast.success(res.data && res.data.message);
-
-
-
   navigate("/login");
 } 
 else {

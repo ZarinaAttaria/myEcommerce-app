@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react'
-import Layout from '../../components/Layout'
+import Layout from '../../components/layout/Layout'
 import axios from 'axios';
 import { useNavigate,useLocation } from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -58,7 +58,7 @@ else {
     }
   };
   return (
-    <Layout title="Login - Ecommer App">
+    <Layout title="Login - Ecommerce App">
     <div className="form-container" style={{ minHeight: "90vh" }}>
       <form onSubmit={handleSubmit}>
         <h4 className="title">LOGIN FORM</h4>

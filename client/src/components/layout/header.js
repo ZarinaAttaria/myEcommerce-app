@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink ,Link} from 'react-router-dom'
 import { FaCartShopping } from "react-icons/fa6";
-import { useAuth } from '../context/auth';
+import { useAuth } from '../../context/auth';
 import {toast} from 'react-toastify';
-import Dashboard from './../pages/user/Dashboard';
+import Dashboard from '../../pages/user/Dashboard';
 
 const Header = () => {
   const [auth,setAuth]=useAuth();
