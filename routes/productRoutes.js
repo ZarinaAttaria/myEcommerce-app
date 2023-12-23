@@ -2,7 +2,7 @@ import express from "express";
 
 
 import formidable from "express-formidable";
-import { createProductController,deleteProductController,getProductController, getSingleProductController, productPhotoController, updateProductController } from "../controller/productController.js";
+import { createProductController,deleteProductController,getProductController, getSingleProductController, productCategoryController, productCountController, productFiltersController, productListController, productPhotoController, relatedProductController, searchProductController, updateProductController } from "../controller/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddlewares.js";
 
 const router = express.Router();
@@ -28,4 +28,12 @@ router.put(
   formidable(),
   updateProductController
 );
+router.post("/product-filters",productFiltersController);
+router.get("/product-count",productCountController);
+router.get("/product-list/:page", productListController);
+router.get("/search/:keyword", searchProductController);
+router.get("/related-product/:pid/:cid", relatedProductController);
+//category wise product
+router.get("/product-category/:slug", productCategoryController);
+
 export default router;
