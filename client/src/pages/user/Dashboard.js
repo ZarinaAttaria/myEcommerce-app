@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../../components/layout/Layout'
 import { useAuth } from '../../context/auth'
 import UserMenu from '../../components/layout/UserMenu'
+
 const Dashboard = () => {
   const [auth]=useAuth()
   return (

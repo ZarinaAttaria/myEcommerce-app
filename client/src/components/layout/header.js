@@ -4,15 +4,14 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useAuth } from '../../context/auth';
 import {toast} from 'react-toastify';
 import Dashboard from '../../pages/user/Dashboard';
-import SearchInput from './../Form/SearchInput';
+import SearchInput from '../Form/SearchInput';
 import useCategory from '../../hooks/useCategory';
 import { useCart } from '../../context/cart';
-import { Avatar, Badge } from 'antd';
+import { Badge } from 'antd';
 const Header = () => {
   const [auth,setAuth]=useAuth();
-  const [cart]=useCart();
-
   const categories=useCategory();
+  const [cart]=useCart();
 const handleLogut=()=>{
   setAuth({
     ...auth,
@@ -37,21 +36,33 @@ const handleLogut=()=>{
           <NavLink to="/" className="nav-link "  >
             Home</NavLink>
         </li>
-       <li className="nav-item dropdown">
-  <Link className="nav-link dropdown-toggle" href="#" to={"/categories"}  data-bs-toggle="dropdown" >
-    Categories
-  </Link>
-  <ul className="dropdown-menu">
-<li>
-<Link className="dropdown-item" href="#" to={`/categories`}>All Categories</Link>
-</li>
-  {categories?.map(c=>(
-    <li><Link className="dropdown-item" href="#" to={`/category/${c.slug}`}>{c.name}</Link></li>
-  
-  ))}
-  </ul>
-  
-</li>
+       
+        <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to={"/categories"}
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to={"/categories"}>
+                      All Categories
+                    </Link>
+                  </li>
+                  {categories?.map((c) => (
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        to={`/category/${c.slug}`}
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
 
       {
         !auth.user? (<>
@@ -82,13 +93,14 @@ item">
          
         </>)
       }
-         <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  <Badge count={cart?.length} showZero offset={[10, -5]}>
-                    Cart
-                  </Badge>
-                </NavLink>
-              </li>
+        <li className="nav-
+item">
+  <Badge count={cart?.length} showZero>
+  <NavLink to="/cart" className="nav-link">
+            Cart </NavLink>
+  </Badge>
+          
+        </li>
       </ul>
      
     </div>

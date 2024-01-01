@@ -1,8 +1,7 @@
-import React ,{useState,useEffect} from 'react'
-import Layout from '../components/layout/Layout';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-
+import axios from 'axios';
+import Layout from '../components/layout/Layout';
 const CategoryProduct = () => {
     const params = useParams();
     const navigate = useNavigate();
@@ -12,7 +11,6 @@ const CategoryProduct = () => {
     useEffect(() => {
       if (params?.slug) getPrductsByCat();
     }, [params?.slug]);
-    
     const getPrductsByCat = async () => {
       try {
         const { data } = await axios.get(

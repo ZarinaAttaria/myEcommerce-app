@@ -6,7 +6,7 @@ const UserMenu = () => {
     <div className="text-center">
 
 <div class="list-group">
-  <h4>Dashboard</h4> 
+  <h4>Dashboard</h4>
   <NavLink to="/dashboard/user/profile" class="list-group-item list-group-item-action">
    Profile
     </NavLink>

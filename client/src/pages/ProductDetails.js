@@ -1,20 +1,18 @@
-import React,{useState,useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
-import axios from "axios";
-import {toast} from 'react-toastify';
-
-import { useParams,useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 const ProductDetails = () => {
-    const params =useParams()
-    const navigate = useNavigate();
+  const params = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
-  //initial details
-useEffect(() => {
+
+  //initalp details
+  useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
-    //getProduct
+  //getProduct
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
@@ -26,8 +24,8 @@ useEffect(() => {
       console.log(error);
     }
   };
-   //get similar product
-   const getSimilarProduct = async (pid, cid) => {
+  //get similar product
+  const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
         `http://localhost:8080/api/v1/product/related-product/${pid}/${cid}`
@@ -75,7 +73,7 @@ useEffect(() => {
           {relatedProducts?.map((p) => (
             <div className="card m-2" key={p._id}>
               <img
-                src={`/api/v1/product/product-photo/${p._id}`}
+                src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
                 alt={p.name}
               />
@@ -119,7 +117,7 @@ useEffect(() => {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export default ProductDetails

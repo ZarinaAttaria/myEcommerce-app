@@ -1,22 +1,25 @@
-import React from 'react'
-import Layout from '../components/layout/Layout'
-import { BiMailSend, BiPhoneCall, BiSupport } from "react-icons/bi";
+// Contact.js
+
+import React from 'react';
+import Layout from '../components/layout/Layout';
+import { BiMailSend, BiPhoneCall, BiSupport } from 'react-icons/bi';
+import '../styles/styles.css';
+
 const Contact = () => {
   return (
-    <Layout title={"Contact us- Ecommerce App"}>
-      <div className="row contactus ">
-        <div className="col-md-6 ">
+    <Layout title={'Contact us- Ecommerce App'}>
+      <div className="row contactus">
+        <div className="col-md-6">
           <img
             src="https://www.moovaz.com/wp-content/uploads/2022/03/contact-box.png"
             alt="contactus"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           />
         </div>
         <div className="col-md-4">
           <h1 className="bg-dark p-2 text-white text-center">CONTACT US</h1>
           <p className="text-justify mt-2">
-            any query and info about prodduct feel free to call anytime we 24X7
-            vaialible
+            any query and info about the product feel free to call anytime we 24X7 available
           </p>
           <p className="mt-3">
             <BiMailSend /> : www.help@ecommerceapp.com
@@ -25,12 +28,12 @@ const Contact = () => {
             <BiPhoneCall /> : 012-3456789
           </p>
           <p className="mt-3">
-            <BiSupport /> : 1800-0000-0000 (toll free)
+            <BiSupport /> : 1800-0000-0000 (toll-free)
           </p>
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

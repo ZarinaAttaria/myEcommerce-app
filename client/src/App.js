@@ -8,6 +8,7 @@ import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 import Dashboard from './pages/user/Dashboard';
 import PrivateRoute from './components/Routes/Private';
+import ForgotPassword from './pages/Auth/ForgotPassword';
 import AdminRoute from './components/Routes/Private';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import CreateCategory from './pages/Admin/CreateCategory';
@@ -17,12 +18,12 @@ import Orders from './pages/user/Orders';
 import Profile from './pages/user/Profile';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
-import Search from './pages/Search';
+import SSearch from './pages/SSearch';
 import ProductDetails from './pages/ProductDetails';
-import ForgotPassword from './pages/Auth/ForgotPassword';
 import Categories from './pages/Categories';
 import CategoryProduct from './pages/CategoryProduct';
 import CartPage from './pages/CartPage';
+import AdminOrders from './pages/Admin/AdminOrders';
 
 function App() {
   return (
@@ -30,12 +31,14 @@ function App() {
 <Routes>
 <Route path="/" element={<Homepage/>}/>
 <Route path="/product/:slug" element={<ProductDetails/>}/>
+
 <Route path="/categories" element={<Categories/>}/>
 <Route path="/cart" element={<CartPage/>}/>
 
+<Route path="/category/:slug" element={<CategoryProduct/>}/>
 
-<Route path="/category/:slug" element={<CategoryProduct />} />
-<Route path="/search" element={<Search/>}/>
+<Route path="/search" element={<SSearch/>}/>
+
 
 <Route path="/dashboard" element={<PrivateRoute/>}>
 <Route path="user" element={<Dashboard/>}/>
@@ -49,12 +52,13 @@ function App() {
 <Route path="admin" element={<AdminDashboard/>}/>
 <Route path="admin/create-category" element={<CreateCategory/>}/>
 <Route path="admin/create-product" element={<CreateProduct/>}/>
-<Route path="admin/product/:slug"
- element={<UpdateProduct/>}/>
+<Route path="admin/product/:slug" element={<UpdateProduct/>}/>
 
 <Route path="admin/products" element={<Products/>}/>
 
 <Route path="admin/users" element={<Users/>}/>
+<Route path="admin/orders" element={<AdminOrders/>}/>
+
 
 
   </Route>
